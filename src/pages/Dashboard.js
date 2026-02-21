@@ -1,14 +1,43 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
+
+  const navigate = useNavigate();  // 🔥 required
+
   return (
-    <div>
-      <h2>Bank Dashboard</h2>
-      <Link to="/create-customer">Create Customer</Link><br/>
-      <Link to="/create-account">Create Account</Link><br/>
-      <Link to="/transfer">Transfer Money</Link>
-    </div>
+    <>
+      <div className="navbar">
+        NestBank Dashboard
+        <button
+          className="logout-btn"
+          onClick={() => {
+            localStorage.removeItem("token");
+            window.location.href = "/";
+          }}
+        >
+          Logout
+        </button>
+      </div>
+
+      <div className="dashboard container">
+        <h2>Welcome to Banking Portal</h2>
+
+        <div className="grid">
+          <div className="card-box" onClick={() => navigate("/create-customer")}>
+            Create Customer
+          </div>
+
+          <div className="card-box" onClick={() => navigate("/create-account")}>
+            Create Account
+          </div>
+
+          <div className="card-box" onClick={() => navigate("/transfer")}>
+            Transfer Money
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 

@@ -22,15 +22,29 @@ function Login() {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <input placeholder="Username"
-        onChange={(e) => setUsername(e.target.value)} />
-      <input type="password" placeholder="Password"
-        onChange={(e) => setPassword(e.target.value)} />
-      <button onClick={handleLogin}>Login</button>
+  <div className="center-wrapper">
+    <div className="card">
+      <h2>NestBank Login</h2>
+
+      <input
+        className="input"
+        placeholder="Username"
+        onChange={(e) => setUsername(e.target.value)}
+      />
+
+      <input
+        type="password"
+        className="input"
+        placeholder="Password"
+        onChange={(e) => setPassword(e.target.value)}
+      />
+
+      <button className="button" onClick={handleLogin}>
+        Login
+      </button>
     </div>
-  );
+  </div>
+);
 }
 
 export default Login;
