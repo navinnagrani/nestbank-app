@@ -1,27 +1,40 @@
 import React, { useState } from "react";
 import API from "../api/api";
+import { useNavigate } from "react-router-dom";
+import Sidebar from "../components/Sidebar";
 
 function CreateCustomer() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const createCustomer = async () => {
+    setMessage("");
+    setError("");
     try {
       const res = await API.post("/customers", {
         name,
         email
       });
 
-      alert("Customer created with ID: " + res.data.id);
+      setMessage("Customer created successfully. ID: " + res.data.id);
+      setName("");
+      setEmail("");
     } catch (err) {
-      alert("Error creating customer");
+      setError(err.response?.data?.error || "Error creating customer");
     }
   };
 
   return (
-  <div className="center-wrapper">
+  <div className="layout">
+    <Sidebar />
+    <div className="main-content">
     <div className="card">
       <h2>Create Customer</h2>
+        {message && <div className="message-success">{message}</div>}
+        {error && <div className="message-error">{error}</div>}
 
       <input
         className="input"
@@ -39,6 +52,7 @@ function CreateCustomer() {
         Create
       </button>
     </div>
+  </div>
   </div>
 );
 }
