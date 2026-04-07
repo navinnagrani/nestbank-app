@@ -8,6 +8,9 @@ import CreateAccount from "./pages/CreateAccount";
 import Transfer from "./pages/Transfer";
 import AccountSummary from "./pages/AccountSummary";
 import TransactionHistory from "./pages/TransactionHistory";
+import Debit from "./pages/Debit";
+import Credit from "./pages/Credit";
+import CardPayment from "./pages/CardPayment";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 import { getUserRole } from "./utils/auth";
@@ -74,6 +77,32 @@ function App() {
           element={
             <ProtectedRoute allowedRoles={["CUSTOMER"]}>
               <TransactionHistory />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/debit"
+          element={
+            <ProtectedRoute allowedRoles={["CUSTOMER"]}>
+              <Debit />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/credit"
+          element={
+            <ProtectedRoute allowedRoles={["CUSTOMER"]}>
+              <Credit />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/card-payment"
+          element={
+            <ProtectedRoute allowedRoles={["CUSTOMER"]}>
+              <CardPayment />
             </ProtectedRoute>
           }
         />

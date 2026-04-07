@@ -105,6 +105,34 @@ function Sidebar() {
           >
             Transaction History
           </NavLink>
+
+          <NavLink
+            to="/debit"
+            className={({ isActive }) =>
+              isActive ? "sidebar-link active" : "sidebar-link"
+            }
+          >
+            Debit Cards
+          </NavLink>
+
+          <NavLink
+            to="/credit"
+            className={({ isActive }) =>
+              isActive ? "sidebar-link active" : "sidebar-link"
+            }
+          >
+            Credit Cards
+          </NavLink>
+
+          <NavLink
+            to="/card-payment"
+            className={({ isActive }) =>
+              isActive ? "sidebar-link active" : "sidebar-link"
+            }
+          >
+            Card Payment
+          </NavLink>
+
         </>
       )}
 
